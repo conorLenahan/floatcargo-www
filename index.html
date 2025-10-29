@@ -2,158 +2,111 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Float Cargo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Build with Us — Float Cargo</title>
+  <link rel="stylesheet" href="/styles.css">
 
-  <!-- Favicon -->
+  <!-- Google Fonts and favicon (match index.html) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="manifest" href="/site.webmanifest">
 
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7DFLLM3LHR"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-7DFLLM3LHR');
-  </script>
-
- <!-- Meta Tags -->
-    <meta name="description" content="Float is building next-generation autonomous airships for global logistics - more efficient than anything that has ever flown.">
-    <meta property="og:title" content="Float - 21st-Century Airships for Global Trade">
-    <meta property="og:description" content="Building autonomous airships to create a new middle layer of global logistics between ocean and air.">
-    <meta property="og:image" content="https://floatcargo.com/Linkedin_cover.png">
-  
-  <!-- Unified site styles -->
   <style>
-    :root {
-      --bg-1: #2B313E;
-      --bg-2: #3B4257;
-      --text: #E6EAF2;
-      --heading: #FFFFFF;
-      --muted: #B5BDCA;
-      --accent: #FF8C32;
-      --rule: #465069;
-      --maxw: 680px;
-    }
-
-    /* === GLOBAL THEME === */
-    html, body { height: 100%; margin: 0; padding: 0; }
     body {
-      background: linear-gradient(180deg, var(--bg-1) 0%, var(--bg-2) 100%);
-      color: var(--text);
-      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-      line-height: 1.6;
-      overflow-x: hidden;
-      position: relative;
-    }
-
-    /* Background overlay texture */
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background:
-        linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.2)),
-        url('/Linkedin_cover.png') center/cover no-repeat;
-      opacity: .35;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    /* === HEADER === */
-    header {
-      max-width: var(--maxw);
-      margin: 0 auto 1rem;
+      font-family: 'Inter', sans-serif;
+      color: #111;
+      margin: 0;
+      padding: 2rem;
       text-align: center;
-      padding-top: 1.5rem;
-      position: relative;
-      z-index: 1;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.6;
     }
-    header img {
-      height: 48px;
+
+    img.logo {
+      max-width: 160px;
+      margin: 1rem auto 2rem;
+      display: block;
+    }
+
+    h1 {
+      font-size: 1.8rem;
       margin-bottom: 0.5rem;
     }
-    @media (max-width: 600px) {
-      header img { height: 40px; }
+
+    h2, h3 {
+      margin-top: 2rem;
+      margin-bottom: 0.5rem;
     }
 
-    /* === MAIN CONTENT === */
-    main {
-      max-width: var(--maxw);
-      margin: 0 auto;
-      padding: 2rem;
-      position: relative;
-      z-index: 1;
+    ul {
+      list-style-type: none;
+      padding: 0;
     }
-    h1, h2 { color: var(--heading); margin-top: 0; }
-    h1 { font-size: 1.6rem; }
-    .muted { color: var(--muted); }
 
-    a { color: var(--accent); text-decoration: none; }
-    a:hover { text-decoration: underline; }
+    ul li {
+      margin-bottom: 0.75rem;
+    }
 
-    /* Make links in muted paragraphs inherit the muted tone */
-    .muted a { color: var(--muted); }
-    .muted a:hover { color: var(--text); }
+    a {
+      color: #007AFF;
+      text-decoration: none;
+    }
 
-    hr {
-      border: 0;
-      border-top: 1px solid var(--rule);
-      margin: 2rem 0;
+    footer {
+      margin-top: 3rem;
+      font-size: 0.9rem;
     }
   </style>
 </head>
 
 <body>
-  <!-- Centered logo within content width -->
-  <header>
-    <img src="/Float_logo_orange.png" alt="Float">
-  </header>
+  <!-- Header / Logo -->
+  <img src="/assets/float-logo.svg" alt="Float Cargo logo" class="logo">
 
-  <main>
-    <!-- HERO -->
-    <h1>21st-Century Airships to Define 21st-Century Trade.</h1>
+  <h1>Build with Us</h1>
+  <p><strong>San Francisco Bay Area | Full Time | On-site</strong></p>
 
-    <p>We’re building the next generation of airships — more efficient than anything that has ever flown.</p>
-    <p>They will create a new class of global logistics: a middle layer between ocean and air, moving goods at massive scale and minimal cost.</p>
-    <p>It begins here, in a San Francisco warehouse — the first FAA-compliant prototypes taking shape.</p>
-    <p>Soon, we will deploy mid-size autonomous blimps to replace helicopters in developing markets.</p>
-    <p>And before the decade closes, we’ll fly some of the largest airships in history — the foundation of a new global logistics network representing a $100&nbsp;billion annual opportunity.</p>
+  <p>Float Cargo is building the next era of emissions-free, long-haul cargo logistics — starting with autonomous airships designed for high-efficiency freight.</p>
+  <p>We’re looking for <strong>founding engineers</strong> who thrive on first-principles thinking, cross-disciplinary design, and hands-on iteration. If you love building hardware that actually flies — this is your place.</p>
 
-    <hr>
+  <h3>What You’ll Do</h3>
+  <ul>
+    <li>Design, prototype, and test the first generation of flight hardware — from structural assemblies to power and control systems.</li>
+    <li>Move seamlessly between mechanical, electrical, and systems work: CAD, harness design, fabrication, bench testing, and field integration.</li>
+    <li>Own design decisions end-to-end: requirements, modeling, fabrication, and flight validation.</li>
+    <li>Help shape early engineering culture and methods — documentation, build processes, and our physical lab environment.</li>
+    <li>Work directly with the founder to translate ambitious performance targets into working vehicles — rapidly and safely.</li>
+  </ul>
 
-    <!-- HIRING -->
-    <h2>Build something that matters</h2>
-    <p>
-      Float is hiring a small team of hardware engineers ready to get their hands dirty.
-      You’ll build what you design, fly what you build, and help shape the future of global logistics.
-    </p>
-    <p>
-      If you’re a hardware engineer excited by that prospect,
-      <a href="/build" rel="noopener">click here to learn more →</a>
-    </p>
+  <h3>What We’re Looking For</h3>
+  <ul>
+    <li>Deep comfort building physical systems from scratch — whether your background is <strong>ME with strong EE intuition</strong>, or <strong>EE with mechanical intuition</strong>.</li>
+    <li>Proficiency with CAD (Fusion 360 or SolidWorks), rapid prototyping, and basic machining or composites.</li>
+    <li>Familiarity with embedded electronics, motor controllers, or hybrid-electric powertrains is a plus.</li>
+    <li>Curiosity, rigor, and a bias toward action — you build, test, and learn quickly.</li>
+    <li>Excitement about working in a small, focused team where everything you touch flies within months.</li>
+  </ul>
 
-    <hr>
+  <h3>What You’ll Find Here</h3>
+  <ul>
+    <li>A rare chance to define a new class of aircraft and reshape global logistics.</li>
+    <li>A workshop-based environment in San Francisco where we design, fabricate, and fly our prototypes ourselves.</li>
+    <li>Backing from 50 Years and a growing network of partners who believe in building for the long term.</li>
+  </ul>
 
-    <!-- PEOPLE -->
-    <h2>Builders and backers</h2>
-    <p>
-      <a href="https://www.linkedin.com/in/conorlenahan/" target="_blank" rel="noopener">Conor Lenahan</a>
-      — Founder and CEO. I build hardware and companies to tackle hard problems. I always ship.
-    </p>
-      <a href="https://www.fiftyyears.com" target="_blank" rel="noopener">Fifty Years</a>
-      — Lead investor. Fifty Years is a pre-seed and seed-focused VC firm backing founders using technology to solve the world’s biggest problems — and to start hard companies.
-    </p>
+  <p><strong>Interested?</strong> Email <a href="mailto:careers@floatcargo.com">careers@floatcargo.com</a></p>
 
-    <hr>
-
-    <!-- Contact -->
-    <h2>Reach out</h2>
-    <p>
-      <a href=mailto:“conor@floatcargo.com”>conor@floatcargo.com</a>
-    </p>
-  </main>
+  <footer>
+    <p><a href="/">← Back to Float Cargo Home</a></p>
+  </footer>
 </body>
+</html>
+
 </html>

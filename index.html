@@ -4,28 +4,102 @@
   <meta charset="UTF-8">
   <title>Float Cargo</title>
 
- 
-  <!-- Favicon (optional, add /favicon.ico to your repo if using) -->
+  <!-- Favicon -->
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/site.webmanifest">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
 
- 
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-7DFLLM3LHR"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7DFLLM3LHR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-7DFLLM3LHR');
+  </script>
 
-  gtag('config', 'G-7DFLLM3LHR');
-</script>
+  <!-- Unified site styles -->
+  <style>
+    :root {
+      --bg-1: #2B313E;
+      --bg-2: #3B4257;
+      --text: #E6EAF2;
+      --heading: #FFFFFF;
+      --muted: #B5BDCA;
+      --accent: #FF8C32;
+      --rule: #465069;
+      --maxw: 680px;
+    }
 
-  
+    /* === GLOBAL THEME === */
+    html, body { height: 100%; margin: 0; padding: 0; }
+    body {
+      background: linear-gradient(180deg, var(--bg-1) 0%, var(--bg-2) 100%);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Background overlay texture */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.2)),
+        url('/Linkedin_cover.png') center/cover no-repeat;
+      opacity: .35;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* === HEADER === */
+    header {
+      max-width: var(--maxw);
+      margin: 0 auto 1rem;
+      text-align: center;
+      padding-top: 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+    header img {
+      height: 48px;
+      margin-bottom: 0.5rem;
+    }
+    @media (max-width: 600px) {
+      header img { height: 40px; }
+    }
+
+    /* === MAIN CONTENT === */
+    main {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 2rem;
+      position: relative;
+      z-index: 1;
+    }
+    h1, h2 { color: var(--heading); margin-top: 0; }
+    h1 { font-size: 1.6rem; }
+    .muted { color: var(--muted); }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Make links in muted paragraphs inherit the muted tone */
+    .muted a { color: var(--muted); }
+    .muted a:hover { color: var(--text); }
+
+    hr {
+      border: 0;
+      border-top: 1px solid var(--rule);
+      margin: 2rem 0;
+    }
+  </style>
 </head>
 
-  
 <body>
   <!-- Centered logo within content width -->
   <header>
@@ -40,7 +114,7 @@
     <p>They will create a new class of global logistics: a middle layer between ocean and air, moving goods at massive scale and minimal cost.</p>
     <p>It begins here, in a San Francisco warehouse — the first FAA-compliant prototypes taking shape.</p>
     <p>Soon, we will deploy mid-size autonomous blimps to replace helicopters in developing markets.</p>
-    <p>And before the decade closes, we’ll fly some of the largest airships in history — the foundation of a new global logistics network representing a $100 billion annual opportunity.</p>
+    <p>And before the decade closes, we’ll fly some of the largest airships in history — the foundation of a new global logistics network representing a $100&nbsp;billion annual opportunity.</p>
 
     <hr>
 
@@ -68,59 +142,5 @@
       — Lead investor. Fifty Years is a pre-seed and seed-focused VC firm backing founders using technology to solve the world’s biggest problems — and to start hard companies.
     </p>
   </main>
-
-  <style>
-    /* === HEADER === */
-    header {
-      max-width: 680px;
-      margin: 0 auto 1rem;
-      text-align: center;
-      padding-top: 1.5rem;
-      position: relative;
-      z-index: 1;
-    }
-    header img {
-      height: 48px;
-      margin-bottom: 0.5rem;
-    }
-    @media (max-width: 600px) {
-      header img { height: 40px; }
-    }
-
-    /* === GLOBAL / THEME === */
-    body {
-      margin: 0;
-      background: linear-gradient(180deg,#2B313E 0%,#3B4257 100%);
-      color: #E6EAF2;
-      font-family: -apple-system,BlinkMacSystemFont,sans-serif;
-      line-height: 1.6;
-      overflow-x: hidden;
-      position: relative;
-    }
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background:
-        linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.2)),
-        url('/Linkedin_cover.png') center/cover no-repeat;
-      opacity: .35;
-      pointer-events: none;
-      z-index: 0;
-    }
-    main {
-      max-width: 680px;
-      margin: 0 auto;
-      padding: 2rem;
-      position: relative;
-      z-index: 1;
-    }
-    h1, h2 { color: #FFF; margin-top: 0; }
-    h1 { font-size: 1.6rem; }
-    .muted { color: #B5BDCA; }
-    a { color: #FF8C32; text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    hr { border: 0; border-top: 1px solid #465069; margin: 2rem 0; }
-  </style>
 </body>
 </html>

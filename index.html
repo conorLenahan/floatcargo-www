@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Float Cargo</title>
 
   <!-- Favicon -->
@@ -19,143 +19,142 @@
     gtag('config', 'G-7DFLLM3LHR');
   </script>
 
- <!-- Meta Tags -->
-    <meta name="description" content="Float is building next-generation autonomous airships for global logistics - more efficient than anything that has ever flown.">
-    <meta property="og:title" content="Float - 21st-Century Airships for Global Trade">
-    <meta property="og:description" content="Building autonomous airships to create a new middle layer of global logistics between ocean and air.">
-    <meta property="og:image" content="https://floatcargo.com/Linkedin_cover.png">
-  
-  <!-- Unified site styles -->
+  <!-- Meta Tags -->
+  <meta name="description" content="Float is building next-generation autonomous airships for global logistics - more efficient than anything that has ever flown.">
+  <meta property="og:title" content="Float - 21st-Century Airships for Global Trade">
+  <meta property="og:description" content="Building autonomous airships to create a new middle layer of global logistics between ocean and air.">
+  <meta property="og:image" content="https://floatcargo.com/Linkedin_cover.png">
+
+  <!-- Updated styles per design direction -->
   <style>
-    :root {
-      --bg-1: #2B313E;
-      --bg-2: #3B4257;
-      --text: #E6EAF2;
-      --heading: #FFFFFF;
-      --muted: #B5BDCA;
-      --accent: #FF8C32;
-      --rule: #465069;
-      --maxw: 680px;
+    :root{
+      --bg-1:#2B313E;
+      --bg-2:#3B4257;
+      --text:#E6EAF2;
+      --heading:#FFFFFF;
+      --muted:#B5BDCA;
+      --accent:#FF8C32;   /* kept for logo image only; not used on text */
+      --maxw:720px;
     }
 
-    /* === GLOBAL THEME === */
-    html, body { height: 100%; margin: 0; padding: 0; }
-    body {
-      background: linear-gradient(180deg, var(--bg-1) 0%, var(--bg-2) 100%);
-      color: var(--text);
-      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-      line-height: 1.6;
-      overflow-x: hidden;
-      position: relative;
+    html,body{height:100%;margin:0}
+    body{
+      background:linear-gradient(180deg,var(--bg-1) 0%,var(--bg-2) 100%);
+      color:var(--text);
+      font-family:-apple-system,BlinkMacSystemFont,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      line-height:1.65;
+      overflow-x:hidden;
+      position:relative;
     }
-
-    /* Background overlay texture */
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
+    body::before{
+      content:"";
+      position:fixed; inset:0;
       background:
-        linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.2)),
+        linear-gradient(180deg,rgba(0,0,0,.38),rgba(0,0,0,.22)),
         url('/Linkedin_cover.png') center/cover no-repeat;
-      opacity: .35;
-      pointer-events: none;
-      z-index: 0;
+      opacity:.35; pointer-events:none; z-index:0;
     }
 
-    /* === HEADER === */
-    header {
-      max-width: var(--maxw);
-      margin: 0 auto 1rem;
-      text-align: center;
-      padding-top: 1.5rem;
-      position: relative;
-      z-index: 1;
-    }
-    header img {
-      height: 48px;
-      margin-bottom: 0.5rem;
-    }
-    @media (max-width: 600px) {
-      header img { height: 40px; }
+    /* Layout container */
+    .wrap{
+      max-width:var(--maxw);
+      margin:0 auto;
+      padding-inline:24px;
+      position:relative;
+      z-index:1;
     }
 
-    /* === MAIN CONTENT === */
-    main {
-      max-width: var(--maxw);
-      margin: 0 auto;
-      padding: 2rem;
-      position: relative;
-      z-index: 1;
+    /* Header: more top padding, logo left-aligned with content */
+    header{
+      padding-top:4.5rem;   /* increased top padding */
+      padding-bottom:1.25rem;
     }
-    h1, h2 { color: var(--heading); margin-top: 0; }
-    h1 { font-size: 1.6rem; }
-    .muted { color: var(--muted); }
-
-    a { color: var(--accent); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-
-    /* Make links in muted paragraphs inherit the muted tone */
-    .muted a { color: var(--muted); }
-    .muted a:hover { color: var(--text); }
-
-    hr {
-      border: 0;
-      border-top: 1px solid var(--rule);
-      margin: 2rem 0;
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:.75rem;
     }
+    .brand img{
+      height:52px;
+      display:block;
+    }
+    @media (max-width:600px){
+      .brand img{height:44px}
+      header{padding-top:3.5rem}
+    }
+
+    /* Typography */
+    h1,h2{color:var(--heading); margin:0 0 .6rem}
+    h1{
+      font-size:clamp(1.6rem,2.4vw + 1rem,2.1rem);
+      letter-spacing:.2px;
+    }
+    h2{
+      font-size:1.25rem;
+      margin-top:2.25rem;
+    }
+    p{margin:.65rem 0}
+
+    /* Links: remove orange; use body color with subtle underline on hover */
+    a{
+      color:var(--text);            /* no orange on text */
+      text-decoration:underline;
+      text-underline-offset:2px;
+      text-decoration-color:rgba(230,234,242,.35);
+    }
+    a:hover{
+      text-decoration-color:rgba(230,234,242,.8);
+    }
+    .muted{color:var(--muted)}
+    /* Remove paragraph dividing lines entirely */
+    hr{display:none}
+
+    /* Section spacing refinement without rules */
+    .section + .section{margin-top:1.5rem}
+
+    main{padding-bottom:4rem}
   </style>
 </head>
 
 <body>
-  <!-- Centered logo within content width -->
-  <header>
-    <img src="/Float_logo_orange.png" alt="Float">
-  </header>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <img src="/Float_logo_orange.png" alt="Float">
+      </div>
+    </header>
 
-  <main>
-    <!-- HERO -->
-    <h1>21st-Century Airships to Define 21st-Century Trade.</h1>
+    <main>
+      <!-- HERO -->
+      <section class="section">
+        <h1>21st-Century Airships to Define 21st-Century Trade.</h1>
+        <p>We’re building the next generation of airships — more efficient than anything that has ever flown.</p>
+        <p>They will create a new class of global logistics: a middle layer between ocean and air, moving goods at massive scale and minimal cost.</p>
+        <p>It begins here, in a San Francisco warehouse, where the first FAA-compliant prototypes are taking shape.</p>
+        <p>Soon, we will deploy mid-size autonomous blimps to replace helicopters in developing markets.</p>
+        <p>And before the decade closes, we’ll fly some of the largest airships in history — the foundation of a new global logistics network representing a $100&nbsp;billion annual opportunity.</p>
+      </section>
 
-    <p>We’re building the next generation of airships — more efficient than anything that has ever flown.</p>
-    <p>They will create a new class of global logistics: a middle layer between ocean and air, moving goods at massive scale and minimal cost.</p>
-    <p>It begins here, in a San Francisco warehouse, where the first FAA-compliant prototypes are taking shape.</p>
-    <p>Soon, we will deploy mid-size autonomous blimps to replace helicopters in developing markets.</p>
-    <p>And before the decade closes, we’ll fly some of the largest airships in history — the foundation of a new global logistics network representing a $100&nbsp;billion annual opportunity.</p>
+      <!-- HIRING -->
+      <section class="section">
+        <h2>Build something that matters</h2>
+        <p>Float is hiring a small team of hardware engineers ready to get their hands dirty. You’ll build what you design, fly what you build, and help shape the future of global logistics.</p>
+        <p>If you’re a hardware engineer excited by that prospect, <a href="/build" rel="noopener">click here to learn more →</a></p>
+      </section>
 
-    <hr>
+      <!-- PEOPLE -->
+      <section class="section">
+        <h2>Builders and backers</h2>
+        <p><a href="https://www.linkedin.com/in/conorlenahan/" target="_blank" rel="noopener">Conor Lenahan</a> — Founder and CEO. I build hardware and companies to tackle hard problems. I always ship.</p>
+        <p><a href="https://www.fiftyyears.com" target="_blank" rel="noopener">Fifty Years</a> — Lead investor. Fifty Years is a pre-seed + seed fund that backs deep tech founders building companies that address the world's biggest problems.</p>
+      </section>
 
-    <!-- HIRING -->
-    <h2>Build something that matters</h2>
-    <p>
-      Float is hiring a small team of hardware engineers ready to get their hands dirty.
-      You’ll build what you design, fly what you build, and help shape the future of global logistics.
-    </p>
-    <p>
-      If you’re a hardware engineer excited by that prospect,
-      <a href="/build" rel="noopener">click here to learn more →</a>
-    </p>
-
-    <hr>
-
-    <!-- PEOPLE -->
-    <h2>Builders and backers</h2>
-    <p>
-      <a href="https://www.linkedin.com/in/conorlenahan/" target="_blank" rel="noopener">Conor Lenahan</a>
-      — Founder and CEO. I build hardware and companies to tackle hard problems. I always ship.
-    </p>
-      <a href="https://www.fiftyyears.com" target="_blank" rel="noopener">Fifty Years</a>
-      — Lead investor. Fifty Years is a pre-seed + seed fund that backs deep tech founders building companies that address the world's biggest problems.
-    </p>
-
-    <hr>
-
-    <!-- Contact -->
-    <h2>Reach out</h2>
-    <p>
-      <a href=mailto:“conor@floatcargo.com”>conor@floatcargo.com</a>
-    </p>
-  </main>
+      <!-- CONTACT -->
+      <section class="section">
+        <h2>Reach out</h2>
+        <p><a href="mailto:conor@floatcargo.com">conor@floatcargo.com</a></p>
+      </section>
+    </main>
+  </div>
 </body>
-</html>
-
 </html>

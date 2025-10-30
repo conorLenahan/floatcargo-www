@@ -38,37 +38,41 @@
       --maxw:720px;
     }
 
+    /* Base document */
     html,body{height:100%;margin:0}
+    html{background-color:var(--bg-2);} /* solid fallback that matches gradient end */
+
     body{
       color:var(--text);
       font-family:-apple-system,BlinkMacSystemFont,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
       line-height:1.65;
       overflow-x:hidden;
       position:relative;
-      /* base (vertical) gradient for the page */
-      background:linear-gradient(180deg,var(--bg-1) 0%, var(--bg-2) 70%);
+      background:none; /* move gradient into the overlay to avoid seams */
     }
 
-    /* Stronger, two-directional overlay + hero image (fixed bottom fade fix) */
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
+    /* Unified background: base gradient + photo + vignettes (overscanned) */
+    body::before{
+      content:"";
+      position:fixed;
+      left:-2px; right:-2px; top:-2px; bottom:-2px; /* overscan to avoid Chrome/WebKit seams */
       background:
-        /* diagonal cool/dark sweep for two-directional feel */
-        linear-gradient(120deg, rgba(0, 0, 0, 0.42) 0%, rgba(0, 0, 0, 0) 55%),
+        /* diagonal cool/dark sweep */
+        linear-gradient(120deg, rgba(0,0,0,.42) 0%, rgba(0,0,0,0) 55%),
         /* subtle warm glow from left to echo brand */
-        linear-gradient(100deg, rgba(255, 140, 50, 0.10) 0%, rgba(255, 140, 50, 0) 45%),
-        /* overall soft vignette top->bottom with clean fade-out */
-        linear-gradient(180deg, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.18) 55%, rgba(0, 0, 0, 0) 100%),
+        linear-gradient(100deg, rgba(255,140,50,.10) 0%, rgba(255,140,50,0) 45%),
+        /* overall soft vignette that fades out toward bottom */
+        linear-gradient(180deg, rgba(0,0,0,.35) 0%, rgba(0,0,0,.18) 55%, rgba(0,0,0,0) 100%),
         /* background image */
-        url('/Linkedin_cover.png') center/cover no-repeat;
-      background-attachment: fixed;
-      background-size: cover;
-      background-repeat: no-repeat;
-      pointer-events: none;
-      z-index: 0;
+        url('/Linkedin_cover.png') center/cover no-repeat,
+        /* base page gradient (bottom-most) */
+        linear-gradient(180deg, var(--bg-1) 0%, var(--bg-2) 100%);
+      pointer-events:none;
+      z-index:0;
+      will-change:transform;
+      transform:translateZ(0);
     }
+
     /* Content wrapper */
     .wrap{
       max-width:var(--maxw);
@@ -113,25 +117,21 @@
     /* Remove old <hr> dividers entirely */
     hr{display:none}
 
-    /* Section separators:
-       - thin full-width rule
-       - short orange dash near the left edge */
+    /* Section separators: short orange dash only */
     .section{
-      margin-top:56px;         /* spacing from previous block */
-      padding-top:28px;        /* space after the rule/dash */
+      margin-top:56px;
+      padding-top:28px;
       position:relative;
     }
     .section::before{
       content:"";
       position:absolute;
       top:0; left:0;
-      width:46px; height:2px;               /* small orange line */
+      width:46px; height:2px;
       background:var(--accent);
       border-radius:2px;
     }
-    .section::after{
-      display: none;
-    }
+    .section::after{display:none;}
 
     main{padding-bottom:4rem}
   </style>
@@ -178,4 +178,6 @@
     </main>
   </div>
 </body>
+</html>
+
 </html>

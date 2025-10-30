@@ -25,37 +25,48 @@
   <meta property="og:description" content="Building autonomous airships to create a new middle layer of global logistics between ocean and air.">
   <meta property="og:image" content="https://floatcargo.com/Linkedin_cover.png">
 
-  <!-- Updated styles per design direction -->
+  <!-- Styles -->
   <style>
     :root{
-      --bg-1:#2B313E;
+      --bg-1:#232937;     /* slightly darker to deepen contrast */
       --bg-2:#3B4257;
       --text:#E6EAF2;
       --heading:#FFFFFF;
       --muted:#B5BDCA;
-      --accent:#FF8C32;   /* kept for logo image only; not used on text */
+      --accent:#FF8C32;   /* for logo + tiny rules only */
+      --rule:rgba(255,255,255,.08);
       --maxw:720px;
     }
 
     html,body{height:100%;margin:0}
     body{
-      background:linear-gradient(180deg,var(--bg-1) 0%,var(--bg-2) 100%);
       color:var(--text);
       font-family:-apple-system,BlinkMacSystemFont,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
       line-height:1.65;
       overflow-x:hidden;
       position:relative;
+      /* base (vertical) gradient for the page */
+      background:linear-gradient(180deg,var(--bg-1) 0%, var(--bg-2) 70%);
     }
+
+    /* Stronger, two-directional overlay + hero image */
     body::before{
       content:"";
       position:fixed; inset:0;
       background:
-        linear-gradient(180deg,rgba(0,0,0,.38),rgba(0,0,0,.22)),
+        /* diagonal cool/dark sweep for two-directional feel */
+        linear-gradient(120deg, rgba(0,0,0,.42) 0%, rgba(0,0,0,0) 55%),
+        /* subtle warm glow from left to echo brand */
+        linear-gradient(100deg, rgba(255,140,50,.10) 0%, rgba(255,140,50,0) 45%),
+        /* overall soft vignette top->bottom */
+        linear-gradient(180deg, rgba(0,0,0,.35) 0%, rgba(0,0,0,.18) 55%, rgba(0,0,0,.38) 100%),
+        /* background image */
         url('/Linkedin_cover.png') center/cover no-repeat;
-      opacity:.35; pointer-events:none; z-index:0;
+      pointer-events:none;
+      z-index:0;
     }
 
-    /* Layout container */
+    /* Content wrapper */
     .wrap{
       max-width:var(--maxw);
       margin:0 auto;
@@ -64,20 +75,13 @@
       z-index:1;
     }
 
-    /* Header: more top padding, logo left-aligned with content */
+    /* Header: more top padding, logo left with content */
     header{
-      padding-top:4.5rem;   /* increased top padding */
+      padding-top:4.75rem;   /* more breathing room */
       padding-bottom:1.25rem;
     }
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:.75rem;
-    }
-    .brand img{
-      height:52px;
-      display:block;
-    }
+    .brand{display:flex; align-items:center; gap:.75rem;}
+    .brand img{height:52px; display:block}
     @media (max-width:600px){
       .brand img{height:44px}
       header{padding-top:3.5rem}
@@ -88,29 +92,46 @@
     h1{
       font-size:clamp(1.6rem,2.4vw + 1rem,2.1rem);
       letter-spacing:.2px;
+      margin-bottom:.9rem;
     }
-    h2{
-      font-size:1.25rem;
-      margin-top:2.25rem;
-    }
+    h2{font-size:1.25rem; margin-bottom:.25rem}
     p{margin:.65rem 0}
+    .muted{color:var(--muted)}
 
-    /* Links: remove orange; use body color with subtle underline on hover */
+    /* Links: keep neutral (no orange) */
     a{
-      color:var(--text);            /* no orange on text */
+      color:var(--text);
       text-decoration:underline;
       text-underline-offset:2px;
       text-decoration-color:rgba(230,234,242,.35);
     }
-    a:hover{
-      text-decoration-color:rgba(230,234,242,.8);
-    }
-    .muted{color:var(--muted)}
-    /* Remove paragraph dividing lines entirely */
+    a:hover{ text-decoration-color:rgba(230,234,242,.8) }
+
+    /* Remove old <hr> dividers entirely */
     hr{display:none}
 
-    /* Section spacing refinement without rules */
-    .section + .section{margin-top:1.5rem}
+    /* Section separators:
+       - thin full-width rule
+       - short orange dash near the left edge */
+    .section{
+      margin-top:56px;         /* spacing from previous block */
+      padding-top:28px;        /* space after the rule/dash */
+      position:relative;
+    }
+    .section::before{
+      content:"";
+      position:absolute;
+      top:0; left:0;
+      width:46px; height:2px;               /* small orange line */
+      background:var(--accent);
+      border-radius:2px;
+    }
+    .section::after{
+      content:"";
+      position:absolute;
+      top:1px; left:0; right:0;             /* faint full-width rule */
+      border-top:1px solid var(--rule);
+    }
 
     main{padding-bottom:4rem}
   </style>
@@ -125,8 +146,8 @@
     </header>
 
     <main>
-      <!-- HERO -->
-      <section class="section">
+      <!-- HERO (no orange rule on the very first block) -->
+      <section aria-label="Hero">
         <h1>21st-Century Airships to Define 21st-Century Trade.</h1>
         <p>We’re building the next generation of airships — more efficient than anything that has ever flown.</p>
         <p>They will create a new class of global logistics: a middle layer between ocean and air, moving goods at massive scale and minimal cost.</p>
@@ -136,21 +157,21 @@
       </section>
 
       <!-- HIRING -->
-      <section class="section">
+      <section class="section" aria-label="Hiring">
         <h2>Build something that matters</h2>
         <p>Float is hiring a small team of hardware engineers ready to get their hands dirty. You’ll build what you design, fly what you build, and help shape the future of global logistics.</p>
         <p>If you’re a hardware engineer excited by that prospect, <a href="/build" rel="noopener">click here to learn more →</a></p>
       </section>
 
       <!-- PEOPLE -->
-      <section class="section">
+      <section class="section" aria-label="Builders and backers">
         <h2>Builders and backers</h2>
         <p><a href="https://www.linkedin.com/in/conorlenahan/" target="_blank" rel="noopener">Conor Lenahan</a> — Founder and CEO. I build hardware and companies to tackle hard problems. I always ship.</p>
         <p><a href="https://www.fiftyyears.com" target="_blank" rel="noopener">Fifty Years</a> — Lead investor. Fifty Years is a pre-seed + seed fund that backs deep tech founders building companies that address the world's biggest problems.</p>
       </section>
 
       <!-- CONTACT -->
-      <section class="section">
+      <section class="section" aria-label="Contact">
         <h2>Reach out</h2>
         <p><a href="mailto:conor@floatcargo.com">conor@floatcargo.com</a></p>
       </section>

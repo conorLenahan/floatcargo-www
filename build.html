@@ -25,180 +25,155 @@
   <meta property="og:description" content="Building autonomous airships to create a new middle layer of global logistics between ocean and air.">
   <meta property="og:image" content="https://floatcargo.com/Linkedin_cover.png">
   
-  <!-- Unified site styles -->
+  <!-- Styles (mirrors index page) -->
   <style>
     :root {
-      --bg-1: #2B313E;
-      --bg-2: #3B4257;
-      --text: #E6EAF2;
-      --heading: #FFFFFF;
-      --muted: #B5BDCA;
-      --accent: #FF8C32;
-      --rule: #465069;
-      --maxw: 680px;
+      --bg-1:#232937;
+      --bg-2:#3B4257;
+      --text:#E6EAF2;
+      --heading:#FFFFFF;
+      --muted:#B5BDCA;
+      --accent:#FF8C32;   /* for logo + tiny rules only */
+      --maxw:720px;
     }
 
-    /* === GLOBAL THEME === */
-    html {
-      height: 100%;
-      /* Use a solid base color that matches the bottom of the gradient
-         so any fade-out ends cleanly with no dark bar */
-      background-color: var(--bg-2);
-    }
+    /* Base document */
+    html, body { height: 100%; margin: 0; }
+    html { background-color: var(--bg-2); } /* solid fallback */
 
     body {
-      min-height: 100vh;
-      margin: 0;
-      padding: 0;
-      /* Page gradient (top -> bottom) */
-      background: linear-gradient(180deg, var(--bg-1) 0%, var(--bg-2) 100%);
       color: var(--text);
-      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-      line-height: 1.6;
+      font-family: -apple-system, BlinkMacSystemFont, system-ui, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.65;
       overflow-x: hidden;
       position: relative;
+      background: none; /* gradient moved into ::before */
     }
 
-    /* Background overlay texture */
+    /* Unified background: base gradient + photo + vignettes (overscanned) */
     body::before {
       content: "";
       position: fixed;
-      inset: 0;
-      /* Overlay now fades to TRANSPARENT at 100% (no solid band).
-         Avoid global opacity; bake alpha into the gradient layers. */
+      left: -2px; right: -2px; top: -2px; bottom: -2px; /* overscan to avoid seams */
       background:
-        linear-gradient(180deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.15) 55%, rgba(0,0,0,0) 100%),
-        url('/Linkedin_cover.png') center/cover no-repeat;
+        /* diagonal cool/dark sweep */
+        linear-gradient(120deg, rgba(0,0,0,.42) 0%, rgba(0,0,0,0) 55%),
+        /* subtle warm glow from left */
+        linear-gradient(100deg, rgba(255,140,50,.10) 0%, rgba(255,140,50,0) 45%),
+        /* soft vignette that fades out toward bottom */
+        linear-gradient(180deg, rgba(0,0,0,.35) 0%, rgba(0,0,0,.18) 55%, rgba(0,0,0,0) 100%),
+        /* background image */
+        url('/Linkedin_cover.png') center/cover no-repeat,
+        /* base page gradient (bottom-most) */
+        linear-gradient(180deg, var(--bg-1) 0%, var(--bg-2) 100%);
       pointer-events: none;
       z-index: 0;
-      /* tiny GPU hint helps some browsers avoid seam artifacts */
       will-change: transform;
       transform: translateZ(0);
     }
 
-    /* === HEADER === */
-    header {
-      max-width: var(--maxw);
-      margin: 0 auto 1rem;
-      text-align: center;
-      padding-top: 1.5rem;
-      position: relative;
-      z-index: 1;
-    }
-    header img {
-      height: 48px;
-      margin-bottom: 0.5rem;
-    }
-    @media (max-width: 600px) {
-      header img { height: 40px; }
-    }
-
-    /* === MAIN CONTENT === */
-    main {
+    /* Layout wrapper */
+    .wrap {
       max-width: var(--maxw);
       margin: 0 auto;
-      padding: 2rem;
+      padding-inline: 24px;
       position: relative;
       z-index: 1;
     }
 
-    h1, h2 { color: var(--heading); margin-top: 0; }
-    h1 { font-size: 1.6rem; }
+    /* Header: left-aligned logo, extra top padding */
+    header {
+      padding-top: 4.75rem;
+      padding-bottom: 1.25rem;
+    }
+    .brand { display: flex; align-items: center; gap: .75rem; }
+    .brand img { height: 52px; display: block; }
+    @media (max-width: 600px) {
+      .brand img { height: 44px; }
+      header { padding-top: 3.5rem; }
+    }
+
+    /* Typography */
+    h1, h2 { color: var(--heading); margin: 0 0 .6rem; }
+    h1 { font-size: clamp(1.6rem, 2.4vw + 1rem, 2.1rem); letter-spacing: .2px; margin-bottom: .9rem; }
+    h2 { font-size: 1.25rem; margin-bottom: .25rem; }
+    p { margin: .65rem 0; }
+    ul { padding-left: 1.2rem; margin: .4rem 0 .9rem; }
     .muted { color: var(--muted); }
 
-    a { color: var(--accent); text-decoration: none; }
-    a:hover { text-decoration: underline; }
+    /* Links: neutral (no orange) */
+    a {
+      color: var(--text);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      text-decoration-color: rgba(230,234,242,.35);
+    }
+    a:hover { text-decoration-color: rgba(230,234,242,.8); }
 
-    .muted a { color: var(--muted); }
-    .muted a:hover { color: var(--text); }
-
-    hr {
-      border: 0;
-      border-top: 1px solid var(--rule);
-      margin: 2rem 0;
+    /* Section separators: short orange dash only */
+    .section {
+      margin-top: 56px;
+      padding-top: 28px;
+      position: relative;
+    }
+    .section::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 46px; height: 2px;
+      background: var(--accent);
+      border-radius: 2px;
     }
 
-    ul {
-      padding-left: 1.2rem;
-    }
+    main { padding-bottom: 4rem; }
   </style>
 </head>
 
 <body>
-  <!-- Centered logo within content width -->
-  <header>
-    <img src="/Float_logo_orange.png" alt="Float">
-  </header>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <img src="/Float_logo_orange.png" alt="Float">
+      </div>
+    </header>
 
-  <main>
-    <!-- BEGIN build-page-content -->
-    <h1>Build with Us</h1>
-    <p><strong>San Francisco Bay Area · Full Time · On-site</strong></p>
+    <main>
+      <!-- HERO -->
+      <section aria-label="Hero">
+        <h1>Build with Us</h1>
+        <p><strong>San Francisco Bay Area · Full Time · On-site</strong></p>
 
-    <p>
-      Float Cargo is building the next era of emissions-free, long-haul cargo logistics — starting with autonomous airships designed for high-efficiency freight.
-    </p>
-    <p>
-      We’re looking for <strong>founding engineers</strong> who thrive on first-principles thinking, cross-disciplinary design, and hands-on iteration.
-      Whether you come from <strong>mechanical</strong> or <strong>electrical</strong> roots, what matters is that you can take ideas from sketch to sky — designing, fabricating, wiring, and flying real systems.
-    </p>
+        <p>
+          Float Cargo is building the next era of emissions-free, long-haul cargo logistics — starting with autonomous airships designed for high-efficiency freight.
+        </p>
+        <p>
+          We’re looking for <strong>founding engineers</strong> who thrive on first-principles thinking, cross-disciplinary design, and hands-on iteration.
+          Whether you come from <strong>mechanical</strong> or <strong>electrical</strong> roots, what matters is that you can take ideas from sketch to sky — designing, fabricating, wiring, and flying real systems.
+        </p>
+      </section>
 
-    <h2>What You’ll Do</h2>
-    <ul>
-      <li>Design, prototype, and test the first generation of flight hardware — from structural assemblies to power and control systems.</li>
-      <li>Develop and integrate onboard electronics: power distribution, PCB and harness design, motor controllers, and sensor interfaces.</li>
-      <li>Jump between modeling, fabrication, wiring, and flight testing as needed — whatever moves the vehicle forward fastest.</li>
-      <li>Own design decisions end-to-end: requirements, modeling, fabrication, and validation.</li>
-      <li>Build the tools, test rigs, and documentation that shape our early engineering culture.</li>
-      <li>Work directly with the founder to translate ambitious performance goals into flying hardware — rapidly and safely.</li>
-    </ul>
+      <!-- WHAT YOU'LL DO -->
+      <section class="section" aria-label="What You’ll Do">
+        <h2>What You’ll Do</h2>
+        <ul>
+          <li>Design, prototype, and test the first generation of flight hardware — from structural assemblies to power and control systems.</li>
+          <li>Develop and integrate onboard electronics: power distribution, PCB and harness design, motor controllers, and sensor interfaces.</li>
+          <li>Jump between modeling, fabrication, wiring, and flight testing as needed — whatever moves the vehicle forward fastest.</li>
+          <li>Own design decisions end-to-end: requirements, modeling, fabrication, and validation.</li>
+          <li>Build the tools, test rigs, and documentation that shape our early engineering culture.</li>
+          <li>Work directly with the founder to translate ambitious performance goals into flying hardware — rapidly and safely.</li>
+        </ul>
+      </section>
 
-    <h2>What We’re Looking For</h2>
-    <ul>
-      <li>Evidence of deep <strong>first-principles thinking</strong> — you reduce problems to physics and logic before reaching for precedent.</li>
-      <li>A <strong>hands-on bias</strong> — you’re happiest when designing, cutting, soldering, and testing in quick loops.</li>
-      <li>The ability to <strong>span disciplines</strong> — you may lean ME or EE, but you’re fluent enough in both to close gaps yourself or with a teammate.</li>
-      <li>Comfort with ambiguity and constrained resources — you can invent the missing tool, fixture, or method on the fly.</li>
-      <li>A track record (personal or professional) of <strong>building real things that work</strong> — prototypes, experiments, vehicles, instruments, or contraptions.</li>
-      <li>Curiosity, rigor, and taste — you care about why something works as much as that it does.</li>
-      <li>Excitement about joining a small team where what you design today could fly next month.</li>
-    </ul>
-
-    <h2>What You’ll Find Here</h2>
-    <ul>
-      <li>A chance to define a new class of aircraft and reshape global logistics.</li>
-      <li>A workshop-based environment in San Francisco where we design, build, and fly our own prototypes.</li>
-      <li>Backing from <strong>50 Years</strong> and a growing network of partners who believe in building ambitious, enduring systems.</li>
-    </ul>
-
-    <h2>Compensation & Benefits</h2>
-    <p>
-      Early-stage startup salary with meaningful equity. Compensation will grow alongside the company and your impact.
-    </p>
-
-    <p>
-      All full-time team members receive:
-    </p>
-    <ul>
-      <li><strong>Health benefits</strong> and <strong>unlimited time off</strong></li>
-      <li>The opportunity to earn an <strong>FAA Remote Pilot Certificate (Part 107)</strong></li>
-      <li><strong>Support for professional development</strong> and hands-on learning</li>
-      <li><strong>Lunch provided daily</strong> at the workshop</li>
-    </ul>
-
-    <p>
-      We’re building something ambitious on purpose: the work is demanding, but the experience, ownership, and long-term upside are exceptional.
-    </p>
-
-    <p>
-      If this sounds like you — even if you don’t tick every box — reach out.<br>
-      📧 <a href="mailto:careers@floatcargo.com">careers@floatcargo.com</a>
-    </p>
-
-    <p><a href="/">← Back to Float Cargo Home</a></p>
-    <!-- END build-page-content -->
-  </main>
-</body>
-</html>
+      <!-- WHAT WE’RE LOOKING FOR -->
+      <section class="section" aria-label="What We’re Looking For">
+        <h2>What We’re Looking For</h2>
+        <ul>
+          <li>Evidence of deep <strong>first-principles thinking</strong> — you reduce problems to physics and logic before reaching for precedent.</li>
+          <li>A <strong>hands-on bias</strong> — you’re happiest when designing, cutting, soldering, and testing in quick loops.</li>
+          <li>The ability to <strong>span disciplines</strong> — you may lean ME or EE, but you’re fluent enough in both to close gaps yourself or with a teammate.</li>
+          <li>Comfort with ambiguity and constrained resources — you can invent the missing tool, fixture, or method on the fly.</li>
+          <li>A track record (personal or professional) of <strong>building real things that work</strong> — prototypes, experiments, vehicles, instruments, or contraptions.</li>
+          <li>Curiosity, rigor, and taste — you care about why something works as much as that it does.</li>
 
 </html>

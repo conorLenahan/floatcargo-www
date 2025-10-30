@@ -41,13 +41,16 @@
     /* === GLOBAL THEME === */
     html {
       height: 100%;
-      background: linear-gradient(180deg, var(--bg-1) 0%, var(--bg-2) 100%);
+      /* Use a solid base color that matches the bottom of the gradient
+         so any fade-out ends cleanly with no dark bar */
+      background-color: var(--bg-2);
     }
 
     body {
       min-height: 100vh;
       margin: 0;
       padding: 0;
+      /* Page gradient (top -> bottom) */
       background: linear-gradient(180deg, var(--bg-1) 0%, var(--bg-2) 100%);
       color: var(--text);
       font-family: -apple-system, BlinkMacSystemFont, sans-serif;
@@ -61,12 +64,16 @@
       content: "";
       position: fixed;
       inset: 0;
+      /* Overlay now fades to TRANSPARENT at 100% (no solid band).
+         Avoid global opacity; bake alpha into the gradient layers. */
       background:
-        linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.2)),
+        linear-gradient(180deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.15) 55%, rgba(0,0,0,0) 100%),
         url('/Linkedin_cover.png') center/cover no-repeat;
-      opacity: .35;
       pointer-events: none;
       z-index: 0;
+      /* tiny GPU hint helps some browsers avoid seam artifacts */
+      will-change: transform;
+      transform: translateZ(0);
     }
 
     /* === HEADER === */
@@ -192,4 +199,6 @@
     <!-- END build-page-content -->
   </main>
 </body>
+</html>
+
 </html>
